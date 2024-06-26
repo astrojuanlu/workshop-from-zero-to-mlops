@@ -14,6 +14,6 @@ Final tooling and timing still TBC.
 4. Data cataloguing and pipelines with Kedro (25m)
 5. Break (10m)
 6. Orchestration with Airflow (25m)
-7. Scaling execution with a Dask cluster (25m)
+7. Scaling execution on a Ray cluster (25m)
 8. Model monitoring with Evidently (20m)
 9. Conclusions and buffer (20m)

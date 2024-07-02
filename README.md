@@ -2,6 +2,8 @@
 
 https://ep2024.europython.eu/session/from-zero-to-mlops-an-open-source-stack-to-fight-spaghetti-ml
 
+![Open source MLOps stack](img/kedro-mlops.png)
+
 ## Outline
 
 Approximate duration: 3 hours.

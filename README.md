@@ -1,6 +1,11 @@
 # From zero to MLOps: An open source stack to fight spaghetti ML
 
-https://ep2024.europython.eu/session/from-zero-to-mlops-an-open-source-stack-to-fight-spaghetti-ml
+![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)
+
+Material for the workshop "From zero to MLOps: An open source stack to fight spaghetti ML"
+first delivered at EuroPython 2024 https://ep2024.europython.eu/session/from-zero-to-mlops-an-open-source-stack-to-fight-spaghetti-ml
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/astrojuanlu/workshop-from-zero-to-mlops/)
 
 ![Open source MLOps stack](img/kedro-mlops.png)
 

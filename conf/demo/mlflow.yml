@@ -1,0 +1,2 @@
+server:
+  mlflow_tracking_uri: http://localhost:8080

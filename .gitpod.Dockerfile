@@ -1,8 +1,6 @@
-FROM gitpod/workspace-python
+FROM gitpod/workspace-python-3.11:2024-03-20-07-19-19
 
-RUN pyenv install 3.11.8 \
-    && pyenv global 3.11.8 \
-    && pip install uv
+RUN pyenv global 3.11.8 && pip install uv
 
 RUN wget https://dl.min.io/client/mc/release/linux-amd64/mc \
     && chmod +x mc \

@@ -3,3 +3,7 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://docs.kedro.org/en/0.19.6/configuration/parameters.html
+
+training_options:
+  val_size: 0.2
+  random_state: 42

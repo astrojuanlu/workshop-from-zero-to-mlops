@@ -12,7 +12,11 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=split_data,
-                inputs="reddit_model_input",
+                inputs=[
+                    "reddit_model_input",
+                    "params:training_options.val_size",
+                    "params:training_options.random_state",
+                ],
                 outputs=["X_train", "X_val", "y_train", "y_val"],
             ),
             node(

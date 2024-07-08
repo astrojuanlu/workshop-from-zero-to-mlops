@@ -27,7 +27,9 @@ def split_data(
     return X_train, X_val, y_train, y_val
 
 
-def train_classifier(X_train: pl.DataFrame, y_train: pl.Series) -> Pipeline:
+def train_classifier(
+    X_train: pl.DataFrame, y_train: pl.Series, random_state: int = 42
+) -> Pipeline:
     classifier = Pipeline(
         [
             (
@@ -42,7 +44,12 @@ def train_classifier(X_train: pl.DataFrame, y_train: pl.Series) -> Pipeline:
                     remainder="drop",
                 ).set_output(transform="polars"),
             ),
-            ("classifier", DecisionTreeClassifier(class_weight="balanced")),
+            (
+                "classifier",
+                DecisionTreeClassifier(
+                    class_weight="balanced", random_state=random_state
+                ),
+            ),
         ]
     )
 

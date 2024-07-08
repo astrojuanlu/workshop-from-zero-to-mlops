@@ -1,0 +1,21 @@
+_minio_storage_options:
+  AWS_ALLOW_HTTP: 'true'
+  AWS_EC2_METADATA_DISABLED: 'true'
+  AWS_S3_ALLOW_UNSAFE_RENAME: 'true'
+
+_merge_save_args:
+  mode: merge
+  merge_predicate: "s.permalink = t.permalink"
+
+reddit_submissions_raw:
+  type: reddit_a_predictor.datasets.PolarsDeltaDataset
+  filepath: s3://reddit-submissions/submissions-raw
+  credentials: minio_object_store
+  storage_options: ${_minio_storage_options}
+
+reddit_model_input:
+  type: reddit_a_predictor.datasets.PolarsDeltaDataset
+  filepath: s3://reddit-submissions/model-input
+  credentials: minio_object_store
+  storage_options: ${_minio_storage_options}
+  save_args: ${_merge_save_args}

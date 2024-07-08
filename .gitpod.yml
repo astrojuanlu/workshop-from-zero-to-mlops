@@ -1,0 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Install Python project with dependencies
+    # Do not use `python -m pip install` with pyenv,
+    # see https://github.com/pyenv/pyenv/issues/2243
+    init: |
+      uv venv
+      uv pip install -r requirements.txt -p .venv/bin/python
+
+  - name: Prepare services
+    init: |
+      mkdir minio-data
+      docker-compose pull

@@ -9,6 +9,9 @@ formatters:
     format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 handlers:
+  prefect:
+    class: prefect.logging.handlers.APILogHandler
+
   console:
     class: logging.StreamHandler
     level: INFO
@@ -32,12 +35,15 @@ handlers:
     # See https://docs.kedro.org/en/stable/logging/logging.html#project-side-logging-configuration
     # tracebacks_show_locals: False
 
+# FIXME: Logger 'kedro.framework.projec attempted to send logs to the API without a flow run id.
 loggers:
   kedro:
     level: INFO
+    handlers: [prefect]
 
   reddit_a_predictor:
     level: INFO
+    handlers: [prefect]
 
 root:
   handlers: [rich, info_file_handler]

@@ -51,6 +51,22 @@ services:
     ports:
       - "4200:4200"
 
+  # NOTE: Some issues on ARM Macs
+  ray-head:
+    image: rayproject/ray:2.31.0-py311-cpu
+    command: ray start --head --port 6379 --dashboard-host 0.0.0.0 --ray-client-server-port 10001 --block
+    ports:
+      - "10001:10001"
+      - "6379:6379"
+      - "8265:8265"
+
+  ray-worker:
+    image: rayproject/ray:2.31.0-py311-cpu
+    command: ray start --address ray-head:6379 --block
+    depends_on:
+      ray-head:
+        condition: service_started
+
 volumes:
   minio-data:
     driver: local

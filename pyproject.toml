@@ -1,0 +1,22 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "reddit_a_predictor"
+version = "0.1.0"
+description = "Predictor for nasty Reddit stories"
+authors = [
+    {name = "Juan Luis Cano Rodríguez", email = "juan_luis_cano@mckinsey.com"},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.pdm]
+distribution = true
+
+[tool.kedro]
+project_name = "reddit_a_predictor"
+package_name = "reddit_a_predictor"
+kedro_init_version = "0.19.6"

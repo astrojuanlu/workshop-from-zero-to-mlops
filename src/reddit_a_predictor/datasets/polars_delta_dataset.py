@@ -29,6 +29,7 @@ class PolarsDeltaDataset(AbstractDataset[pl.DataFrame, pl.DataFrame]):
 
         self._storage_options.update(self._credentials)
         self._metadata = metadata or {}
+        self._merge_predicate = self._save_args.pop("merge_predicate", None)
 
     def _load(self) -> pl.DataFrame:
         return pl.read_delta(
@@ -36,9 +37,29 @@ class PolarsDeltaDataset(AbstractDataset[pl.DataFrame, pl.DataFrame]):
         )
 
     def _save(self, data: pl.DataFrame) -> None:
-        data.write_delta(
-            self._filepath, storage_options=self._storage_options, **self._save_args
-        )
+        if self._save_args.get("mode") == "merge":
+            if not self._merge_predicate:
+                raise ValueError("Missing `merge_predicate` for merge mode")
+
+            (
+                data.write_delta(
+                    self._filepath,
+                    storage_options=self._storage_options,
+                    delta_merge_options={
+                        "predicate": self._merge_predicate,
+                        "source_alias": "s",
+                        "target_alias": "t",
+                    },
+                    **self._save_args,
+                )
+                .when_matched_update_all()
+                .when_not_matched_insert_all()
+                .execute()
+            )
+        else:
+            data.write_delta(
+                self._filepath, storage_options=self._storage_options, **self._save_args
+            )
 
     def _describe(self) -> dict[str, t.Any]:
         return dict(

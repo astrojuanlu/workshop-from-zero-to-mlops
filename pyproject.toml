@@ -20,3 +20,17 @@ distribution = true
 project_name = "reddit_a_predictor"
 package_name = "reddit_a_predictor"
 kedro_init_version = "0.19.6"
+
+[tool.ruff]
+show-fixes = true
+
+[tool.ruff.lint]
+select = [
+    "F",  # Pyflakes
+    "E",  # Pycodestyle
+    "W",  # Pycodestyle
+    "UP",  # pyupgrade
+    "I",  # isort
+    "PL",  # Pylint
+]
+ignore = ["PLR0913"]

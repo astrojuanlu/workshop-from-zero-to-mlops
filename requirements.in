@@ -1,16 +1,8 @@
-# kedro-viz==9.1.0  # Dependency issues
-kedro-datasets[polars,huggingface]==3.0.1
-kedro-mlflow
-kedro==0.19.6
+-e .
+
 matplotlib
-nltk
 notebook
 pip
-polars[deltalake]~=1.0.0
-praw
 prefect-client~=3.0.0rc10
 prefect-ray~=0.4.0rc2
-pydantic
 python-dotenv
-s3fs
-scikit-learn

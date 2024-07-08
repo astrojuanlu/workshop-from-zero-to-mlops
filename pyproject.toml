@@ -9,7 +9,19 @@ description = "Predictor for nasty Reddit stories"
 authors = [
     {name = "Juan Luis Cano Rodríguez", email = "juan_luis_cano@mckinsey.com"},
 ]
-dependencies = []
+dependencies = [
+    "kedro-datasets[polars,huggingface]==3.0.1",
+    "kedro-mlflow",
+    "kedro==0.19.6",
+    "mlflow>=2",  # Undeclared lower version cap of kedro-mlflow
+    "nltk",
+    "polars[deltalake]~=1.0.0",
+    "praw",
+    "pydantic",
+    "s3fs",
+    "scikit-learn",
+    "setuptools",  # Undeclared dependency of kedro-mlflow
+]
 requires-python = ">=3.11"
 readme = "README.md"
 

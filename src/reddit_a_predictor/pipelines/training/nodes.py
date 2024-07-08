@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import polars as pl
 from sklearn.compose import make_column_transformer
+from sklearn.metrics import precision_score
 from sklearn.model_selection import GridSearchCV, StratifiedKFold, train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
@@ -64,3 +65,10 @@ def train_classifier(
     cv.fit(X_train, y_train)
 
     return cv.best_estimator_
+
+
+def compute_classifier_precision(
+    classifier: Pipeline, X_val: pl.DataFrame, y_val: pl.Series
+) -> float:
+    y_pred = classifier.predict(X_val)
+    return precision_score(y_val, y_pred, average="weighted")

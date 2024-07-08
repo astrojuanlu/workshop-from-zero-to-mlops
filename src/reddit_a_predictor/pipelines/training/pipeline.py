@@ -4,7 +4,7 @@ generated using Kedro 0.19.6
 
 from kedro.pipeline import Pipeline, node, pipeline
 
-from .nodes import split_data, train_classifier
+from .nodes import compute_classifier_precision, split_data, train_classifier
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -23,6 +23,11 @@ def create_pipeline(**kwargs) -> Pipeline:
                 func=train_classifier,
                 inputs=["X_train", "y_train"],
                 outputs="classifier",
+            ),
+            node(
+                func=compute_classifier_precision,
+                inputs=["classifier", "X_val", "y_val"],
+                outputs="classifier_precision",
             ),
         ]
     )

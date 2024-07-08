@@ -23,3 +23,7 @@ reddit_model_input:
 classifier:
   type: kedro_mlflow.io.models.MlflowModelTrackingDataset
   flavor: mlflow.sklearn
+
+classifier_precision:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+  key: classifier_precision
